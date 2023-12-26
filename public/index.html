@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IP Info Finder</title>
+</head>
+<body>
+    <h1>IP Information Finder</h1>
+    <input type="text" id="ipInput" placeholder="Enter IP address">
+    <button onclick="fetchIpInfo()">Submit</button>
+    <pre id="result"></pre>
+
+    <script>
+        async function fetchIpInfo() {
+            const ip = document.getElementById('ipInput').value;
+            const response = await fetch(`/getIpInfo?ip=${ip}`);
+            const data = await response.json();
+            document.getElementById('result').textContent = 
+JSON.stringify(data, null, 2);
+        }
+    </script>
+</body>
+</html>
+
